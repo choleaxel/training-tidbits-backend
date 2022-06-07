@@ -11,5 +11,11 @@
       }
     ],
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
+  "emulators": {
+    "hosting": {
+      "port": "5555",
+      "host": "localhost"
+    }
   }
 }

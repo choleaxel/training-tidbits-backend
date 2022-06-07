@@ -1,5 +1,6 @@
-import { initializeApp } from "firebase-admin";
+import { initializeApp } from "firebase-admin/app";
 import { cert, getApps } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
 import myCredentials from "./credentials.js";
 
 export default function connectDb() {

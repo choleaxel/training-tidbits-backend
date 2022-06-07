@@ -7,7 +7,7 @@ import {
   deleteMed,
   addMed,
   getMedById,
-} from "./src/medications";
+} from "./src/medications.js";
 
 const app = express();
 app.use(cors());
