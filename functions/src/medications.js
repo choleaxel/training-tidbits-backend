@@ -71,6 +71,42 @@ export function getMedById(req, res) {
     });
 }
 
+export function getMedByName(req, res) {
+  const { medicationName } = req.params;
+  if (!medicationName) {
+    res.status(401).send("Invalid request");
+    return;
+  }
+  const db = connectDb();
+  db.collection("medications")
+    .where("name", "==", medicationName)
+    .get()
+    .then((snapshot) => {
+      const medications = snapshot.docs.map((doc) => {
+        let medication = doc.data();
+        medication.id = doc.id;
+        return medication;
+      });
+
+      res.send(medications);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(err);
+    });
+}
+
+// export const getMedByName = async (req, res) => {
+//   const db = connectDb();
+//   try {
+//     const col = await db.collection("medications").get();
+//     const medication = await medication.name;
+//     return medication;
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// };
+
 export function deleteMed(req, res) {
   const { medicationId } = req.params;
   if (!medicationId) {
@@ -82,7 +118,7 @@ export function deleteMed(req, res) {
     .doc(medicationId)
     .delete()
     .then(() => {
-      res.send("Medication Card deleted");
+      res.send("Medication deleted");
     })
     .catch((err) => {
       res.status(500).send(err);
