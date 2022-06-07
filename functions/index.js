@@ -21,11 +21,11 @@ app.post("/medications", addMed);
 app.patch("/medications/:medicationId", updateMed);
 app.delete("/medications/:medicationId", deleteMed);
 
-// export const api = functions.https.onRequest(app);
+export const api = functions.https.onRequest(app);
 
-app.listen(5555, () => {
-  console.log(`Listening on 5555`);
-});
+// app.listen(5555, () => {
+//   console.log(`Listening on 5555`);
+// });
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
