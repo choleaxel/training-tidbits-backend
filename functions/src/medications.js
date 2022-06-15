@@ -10,7 +10,7 @@ export function getAllMeds(req, res) {
         medication.id = doc.id;
         return medication;
       });
-      res.send(medsArray);
+      res.send(medsArray); //add .sort() and redeploy?
     })
     .catch((err) => {
       res.status(500).send(err);
@@ -95,17 +95,6 @@ export function getMedByName(req, res) {
       res.status(500).send(err);
     });
 }
-
-// export const getMedByName = async (req, res) => {
-//   const db = connectDb();
-//   try {
-//     const col = await db.collection("medications").get();
-//     const medication = await medication.name;
-//     return medication;
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// };
 
 export function deleteMed(req, res) {
   const { medicationId } = req.params;

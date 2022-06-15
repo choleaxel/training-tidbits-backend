@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/medications", getAllMeds);
-// app.get("/medications/:medicationId", getMedById);
+app.get("/medications/:medicationId", getMedById);
 app.get("/medications/:medicationName", getMedByName);
 app.post("/medications", addMed);
 app.patch("/medications/:medicationId", updateMed);
